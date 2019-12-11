@@ -10,38 +10,56 @@
 </head>
 
 <body onload="init()">
+    
     <header>
-        <nav class="main-nav"></nav>
+        <nav class="main-nav">
+            <div class="flex align-center space-between">
+                <div class="main-logo">
+                    <h1>MEME IT!</h1>
+                </div>
+                <ul class="main-menu clean-list flex">
+                    <li><a href="" class="flex justify-center align-center" onclick="updatePage()">Gallery</a></li>
+                    <li><a href="" class="flex justify-center align-center" onclick="updatePage()">Memes</a></li>
+                    <li><a href="" class="flex justify-center align-center" onclick="updatePage()">About</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
-    <div class="container">
 
-        <section class="memes-page">
-            <div class="memes-imges-container flex wrap column">
-            </div>
-        </section>
 
-        <section class="memes-canvas-page flex wrap hidden">
-            <div class="canvas-container">
-                <canvas id="memes-canvas" width="500px" height="500px">
-                    Update your browser to enjoy canvas!
-                </canvas>
+    <section class="memes-page">
+        <div class="memes-imges-container flex wrap ">
+        </div>
+    </section>
+
+    <section class="memes-canvas-page flex wrap hidden">
+        <div class="canvas-container">
+            <canvas id="memes-canvas" width="500px" height="500px">
+                Update your browser to enjoy canvas!
+            </canvas>
+        </div>
+        <div class="inputs-container  justify-center">
+            <div class="lines">
+                <input id="meme-txt-1" data-id="0" type="text" placeholder="enter line to add" onkeyup="updateText(this)">
             </div>
-            <div class="inputs-container  justify-center">
-                <input id="meme-txt-1" data-id="0" type="text" placeholder="enter line to add"
-                    onchange="updateText()">
-                <p class="text-input input-1 hidden"></p>
-                <input id="meme-txt-2" data-id="1" type="text" placeholder="enter line to add"
-                    onchange="updateText()">
-                <p class="text-input input-2 hidden"></p>
-            </div>
-            
-        </section>
-        <script src="js/utils.js"></script>
-        <script src="js/mainServies.js"></script>
-        <script src="js/memeServies.js"></script>
-        <script src="js/canvasServies.js"></script>
-        <script src="js/mainController.js"></script>
-    </div>
+            <label for="range">Change Size:</label> 
+            <input type="range" min = "1" max= "5" step="0.1" data-id="text-size-input-line-1" onchange="setTextSize(this)">
+            <p class="text-input input-1 hidden"></p>
+            <button onclick="lineUp(this)">UP LINE</button>
+            <button onclick="lineDown(this)">DOWN LINE</button>
+            <label for="color">Enter your preffered text color:</label>
+            <input type="color" name="color" id="color" onchange="setTextColor(this)">
+            <button onclick="changeLine()">Change Line</button>
+        </div>
+
+    </section>
+
+    <script src="js/utils.js"></script>
+    <script src="js/mainService.js"></script>
+    <script src="js/memeService.js"></script>
+    <script src="js/canvasService.js"></script>
+    <script src="js/canvasController.js"></script>
+    <script src="js/mainController.js"></script>
 </body>
 
 </html>

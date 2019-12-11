@@ -2,11 +2,12 @@ function init(){
     console.log('load page!')
     gImgs = createMemesBoard();
     renderMemesBoard();
-    gMemes =  createMemes();
+    gMemes = createMemes();
+
     gCanvas = document.querySelector('#memes-canvas');
     gCtx = gCanvas.getContext('2d');
+    document.querySelector('#meme-txt-1').addEventListener('keyup',updateText); 
 }
-
 
 function renderMemesBoard(){
     var strHTML = '';
@@ -15,5 +16,4 @@ function renderMemesBoard(){
     });
     document.querySelector('.memes-imges-container').innerHTML = strHTML;
 }
-
 
