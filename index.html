@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>MemeIt</title>
+</head>
+
+<body onload="init()">
+    <header>
+        <nav class="main-nav"></nav>
+    </header>
+    <div class="container">
+
+        <section class="memes-page">
+            <div class="memes-imges-container flex wrap column">
+            </div>
+        </section>
+
+        <section class="memes-canvas-page flex wrap hidden">
+            <div class="canvas-container">
+                <canvas id="memes-canvas" width="500px" height="500px">
+                    Update your browser to enjoy canvas!
+                </canvas>
+            </div>
+            <div class="inputs-container  justify-center">
+                <input id="meme-txt-1" data-id="0" type="text" placeholder="enter line to add"
+                    onchange="updateText()">
+                <p class="text-input input-1 hidden"></p>
+                <input id="meme-txt-2" data-id="1" type="text" placeholder="enter line to add"
+                    onchange="updateText()">
+                <p class="text-input input-2 hidden"></p>
+            </div>
+            
+        </section>
+        <script src="js/utils.js"></script>
+        <script src="js/mainServies.js"></script>
+        <script src="js/memeServies.js"></script>
+        <script src="js/canvasServies.js"></script>
+        <script src="js/mainController.js"></script>
+    </div>
+</body>
+
+</html>

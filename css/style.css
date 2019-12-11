@@ -1,0 +1,72 @@
+body {
+    margin: 0px;
+    background-color: aqua;
+}
+
+.main-nav {
+    position: inherit;
+    z-index: 10;
+    height: 100px;
+    background-color: black;
+}
+
+.memes-imges-container{
+    position: absolute;
+    z-index: 0;
+}
+
+.memes-imges-container img {
+    padding: 1%;
+    width: 200px;
+    height: 200px;
+}
+
+.memes-canvas-page {
+    position: absolute;
+    z-index: 1;
+}
+
+
+
+.inputs-container {
+    width: 44%;
+}
+
+
+#memes-canvas {
+    border: 1px solid black;
+}
+
+
+
+
+/* Helpers */
+.flex {
+    display: flex;
+}
+
+.flex.wrap {
+    flex-wrap: wrap;
+}
+
+.column {
+    flex-direction: row;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+
+.container {
+    margin-left: 3%;
+    margin-right: 3%;
+}
