@@ -10,12 +10,12 @@
 </head>
 
 <body onload="init()">
-    
+
     <header>
         <nav class="main-nav">
             <div class="flex align-center space-between">
                 <div class="main-logo">
-                    <h1>MEME IT!</h1>
+                    <h1>memo</h1>
                 </div>
                 <ul class="main-menu clean-list flex">
                     <li><a href="" class="flex justify-center align-center" onclick="updatePage()">Gallery</a></li>
@@ -26,38 +26,65 @@
         </nav>
     </header>
 
-
+    <!-- <div class="container"> -->
     <section class="memes-page">
-        <div class="memes-imges-container flex wrap ">
+        <div class="filters-container flex space-between">
+            <div class="search-container">
+                <form class="search-container-input">
+                    <input id="search" name="search" type="search" placeholder="Search" value="search">
+                </form>
+            </div>
+            <div class="populars-container">
+                <p class="populars-here"></p>
+            </div>
+        </div>
+
+        <div class="memes-imges-container grid-container align-center justify-center">
         </div>
     </section>
 
-    <section class="memes-canvas-page flex wrap hidden">
+
+    <section class="memes-canvas-page space-between flex wrap hidden">
         <div class="canvas-container">
             <canvas id="memes-canvas" width="500px" height="500px">
                 Update your browser to enjoy canvas!
             </canvas>
         </div>
-        <div class="inputs-container  justify-center">
-            <div class="lines">
-                <input id="meme-txt-1" data-id="0" type="text" placeholder="enter line to add" onkeyup="updateText(this)">
-            </div>
-            <label for="range">Change Size:</label> 
-            <input type="range" min = "1" max= "5" step="0.1" data-id="text-size-input-line-1" onchange="setTextSize(this)">
-            <p class="text-input input-1 hidden"></p>
-            <button onclick="lineUp(this)">UP LINE</button>
-            <button onclick="lineDown(this)">DOWN LINE</button>
-            <label for="color">Enter your preffered text color:</label>
-            <input type="color" name="color" id="color" onchange="setTextColor(this)">
-            <button onclick="changeLine()">Change Line</button>
-        </div>
 
+        <div class="inputs-container flex wrap align-center justify-center">
+            <input id="meme-txt" type="text" placeholder="enter line to add" onkeyup="updateText()">
+            <input id="size-range" type="range" min="1" max="70" step="3" data-id="text-size-input-line-1"
+                onchange="setTextSize(this)">
+            <p class="text-input input-1 hidden"></p>
+            <div class="buttons-container flex wrap column align-center justify-center">
+                <button onclick="lineUp(this)">UP LINE</button>
+                <button onclick="lineDown(this)">DOWN LINE</button>
+                <input type="color" name="color" id="color" onchange="setTextColor(this)">
+                <button onclick="changeLine()">Change Line</button>
+                <button onclick="addLine()">Add Line</button>
+                <button onclick="deleteLine()">Delete Line</button>
+            </div>
+            <!-- <div class="memes-container"> -->
+            <!-- ADD MEMES -->
+            <!-- </div> -->
+            <button><a id="download" download="myImage.jpg" href="" onclick="downloadMeme(this)">Download</a></button>
+            <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadMeme(this, event)">
+                <input name="meme" id="meme-data" type="hidden" />
+                <button class="btn" type="submit">Share</button>
+                <div class="share-container"></div>
+            </form>
+
+        </div>
     </section>
 
+    <section class="footer">
+
+    </section>
     <script src="js/utils.js"></script>
     <script src="js/mainService.js"></script>
-    <script src="js/memeService.js"></script>
     <script src="js/canvasService.js"></script>
+    <script src="js/memeService.js"></script>
+    <script src="js/share-service.js"></script>
     <script src="js/canvasController.js"></script>
     <script src="js/mainController.js"></script>
 </body>

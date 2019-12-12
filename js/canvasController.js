@@ -4,31 +4,38 @@ function renderCanvas() {
 
     imgToFill.onload = (function () {
         var pattern = gCtx.createPattern(imgToFill, 'repeat');
+
         gCtx.fillStyle = pattern;
         gCtx.fillRect(0, 0, gCanvas.width, gCanvas.height);
         var meme = getMemeById(gCanvasBgImg.id);
-        debugger
         if (meme) {
-            //if there is couple lines
-            gCtx.fillStyle = meme['txts'][0].color;
-            gCtx.align = meme['txts'][0].align;
-            var font = meme['txts'][0].size * gTextSize + 'px' + ' Arial';
-            gCtx.font = font;
-            gCtx.fillText(meme['txts'][0].line, 50 , 50 + gLineUpOrDown );
             gCurrMeme = meme;
-        } else {
-            //if there is couple lines
-            createMeme(gCanvasBgImg.id,0,[{
+            meme['txts'].forEach((memeTxtStyle, idx) => {
+                gCtx.fillStyle = memeTxtStyle.color;
+                gCtx.textAlign = memeTxtStyle.align;
+                setFontSize(idx, memeTxtStyle);
+                var font = memeTxtStyle.size;
+                gCtx.font = font + 'px' + ' Arial';
+                setLineHeight(idx, memeTxtStyle);
+                gCtx.fillText(memeTxtStyle.line, gCanvas.width / 2, memeTxtStyle.height);
+                setCurrLineBg(idx, memeTxtStyle)
+                gMaxLines = idx;
+            });
+        } else { // if meme does not exist set defoult meme
+            createMeme(gCanvasBgImg.id, 0, [{
                 line: 'ADD TEXT HERE',
                 size: 30,
                 align: 'center',
-                color: 'black'
+                color: 'black',
+                height: 50
+            }, {
+                line: 'ADD TEXT HERE',
+                size: 30,
+                align: 'center',
+                color: 'black',
+                height: 450
             }])
-            gCtx.fillStyle = 'black';
-            gCtx.align = 'center';
-            gCtx.font = '30px Arial';
-            gCtx.fillText('ADD TEXT HERE', 50 , 50 + gLineUpOrDown); 
-            gCurrMeme = gMemes[gMemes.length - 1];
+            renderCanvas();
         }
     });
 }
