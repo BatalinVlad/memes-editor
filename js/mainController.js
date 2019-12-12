@@ -13,8 +13,3 @@ function renderKeys() {
     }
     document.querySelector('.keys-container').innerHTML = strHTML;
 }
-
-// function renderMemesPage(){
-// var strHTML = '';
-// gMemes.forEach()
-// }

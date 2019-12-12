@@ -22,6 +22,5 @@ function doUploadMeme(elForm, onSuccess) {
     })
     .then(onSuccess)
     .catch(function (err) {
-        console.error(err)
     })
 }

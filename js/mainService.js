@@ -5,13 +5,11 @@ let gId = 1;
 let gPage = [];
 
 function init() {
-    console.log('load page!')
     gImgs = createMemesBoard();
     renderMemesBoard();
     gMemes = loadFromStorage('Mems', [])
     if (!gMemes) gMemes = createMemes();
     renderKeys();
-    // renderMemesPage()
     gCanvas = document.querySelector('#memes-canvas');
     gCtx = gCanvas.getContext('2d');
 }
@@ -50,7 +48,6 @@ function updateFilterKeyWords(keyWords) {
 
 
 function openCanvas(elMemeImg) {
-    console.log('open canvas !')
     document.querySelector('.memes-page').style.display = 'none';
     document.querySelector('.filters-container').style.display = 'none';
     document.querySelector('.footer').style.display = 'none';
