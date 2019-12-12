@@ -64,7 +64,7 @@ function updatePage(elPage) {
 
             break;
         case 'About':
-
+            window.open('https://batalinvlad.github.io/portfolio/', '_blank');
             break;
         case 'Memes':
 
