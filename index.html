@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/style.css">
+
+    <!-- MY font awsome Kit -->
+    <script src="https://kit.fontawesome.com/36ae109564.js" crossorigin="anonymous"></script>
+
     <title>MemeIt</title>
 </head>
 
@@ -18,15 +22,17 @@
                     <h1>memo</h1>
                 </div>
                 <ul class="main-menu clean-list flex">
-                    <li><a href="" class="flex justify-center align-center" onclick="updatePage()">Gallery</a></li>
-                    <li><a href="" class="flex justify-center align-center" onclick="updatePage()">Memes</a></li>
-                    <li><a href="" class="flex justify-center align-center" onclick="updatePage()">About</a></li>
+                    <li><a href="" class="flex justify-center align-center" data-id="Gallery"
+                            onclick="updatePage(this)">Gallery</a></li>
+                    <li><a href="" class="flex justify-center align-center" data-id="Memes"
+                            onclick="updatePage(this)">Memes</a></li>
+                    <li><a href="" class="flex justify-center align-center" data-id="About"
+                            onclick="updatePage(this)">About</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <!-- <div class="container"> -->
     <section class="memes-page">
         <div class="filters-container flex space-between">
             <div class="search-container">
@@ -34,13 +40,12 @@
                     <input id="search" name="search" type="search" placeholder="Search" value="search">
                 </form>
             </div>
-            <div class="populars-container">
-                <p class="populars-here"></p>
-            </div>
+            <div class="keys-container flex fill align-center justify-center"></div>
         </div>
 
         <div class="memes-imges-container grid-container align-center justify-center">
         </div>
+
     </section>
 
 
@@ -51,42 +56,74 @@
             </canvas>
         </div>
 
-        <div class="inputs-container flex wrap align-center justify-center">
-            <input id="meme-txt" type="text" placeholder="enter line to add" onkeyup="updateText()">
-            <input id="size-range" type="range" min="1" max="70" step="3" data-id="text-size-input-line-1"
-                onchange="setTextSize(this)">
-            <p class="text-input input-1 hidden"></p>
-            <div class="buttons-container flex wrap column align-center justify-center">
-                <button onclick="lineUp(this)">UP LINE</button>
-                <button onclick="lineDown(this)">DOWN LINE</button>
-                <input type="color" name="color" id="color" onchange="setTextColor(this)">
-                <button onclick="changeLine()">Change Line</button>
-                <button onclick="addLine()">Add Line</button>
-                <button onclick="deleteLine()">Delete Line</button>
+        <div class="inputs-container flex wrap clumn">
+            <div class="fill flex align-center justify-center">
+                <input id="meme-txt" type="text" placeholder="enter line to add" onkeyup="updateText()">
             </div>
-            <!-- <div class="memes-container"> -->
-            <!-- ADD MEMES -->
-            <!-- </div> -->
-            <button><a id="download" download="myImage.jpg" href="" onclick="downloadMeme(this)">Download</a></button>
-            <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadMeme(this, event)">
-                <input name="meme" id="meme-data" type="hidden" />
-                <button class="btn" type="submit">Share</button>
-                <div class="share-container"></div>
-            </form>
 
+            <div class="fill flex align-center justify-center">
+                <i class="meme-buttons-button far fa-arrow-alt-circle-up fa-3x" onclick="lineUp(this)"></i>
+                <i class="meme-buttons-button far fa-arrow-alt-circle-down fa-3x" onclick="lineDown(this)"></i>
+                <i class="meme-buttons-button fas fa-forward fa-3x" onclick="changeLine()"></i>
+            </div>
+            <div class="buttons-container flex wrap column align-center justify-center fill">
+                <i class="meme-buttons-button far fa-plus-square fa-3x" onclick="addLine()"></i>
+                <i class="meme-buttons-button far fa-trash-alt fa-3x" onclick="deleteLine()"></i>
+            </div>
+
+            <div class="flex wrap align-center justify-center fill">
+                <input id="size-range" type="range" min="1" max="70" step="3" data-id="text-size-input-line-1"
+                    onchange="setTextSize(this)">
+                <i class="meme-buttons-button fas fa-align-right fa-3x" data-id="right" onclick="changeAlign(this)"></i>
+                <i class="meme-buttons-button fas fa-align-center fa-3x" data-id="center"
+                    onclick="changeAlign(this)"></i>
+                <i class="meme-buttons-button fas fa-align-left fa-3x" data-id="left" onclick="changeAlign(this)"></i>
+            </div>
+
+            <div class="fill flex wrap justify-center align-center">
+                <select onchange="updateFont(this)">
+                    <option value="Impact">Impact</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Palatino Linotype">Palatino Linotype</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="serif">serif</option>
+                    <input type="color" name="color" id="stroke-color" onchange="setStrokeColor(this)">
+                    <input type="color" name="color" id="txt-color" onchange="setTextColor(this)">
+                </select>
+            </div>
+
+            <div class="flex wrap column align-center justify-center fill">
+                <button><a id="download" download="myImage.jpg" href="" onclick="downloadMeme(this)"><i
+                            class="fas fa-cloud-download-alt fa-3x"></i></a></button>
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadMeme(this, event)">
+                    <input name="meme" id="meme-data" type="hidden" />
+                    <button class="btn" type="submit"><i class="btn fas fa-share-alt-square fa-3x"
+                            tupe="submit"></i></button>
+                </form>
+                <div class="share-container"></div>
+                <button>
+                    <i class="far fa-save fa-3x" onclick="saveMeme()"></i>
+                </button>
+            </div>
         </div>
     </section>
 
     <section class="footer">
 
     </section>
+
+    <section class="saved-memes-page">
+    </section>
+
+    <script src="js/share-service.js"></script>
+    <script src="js/storageService.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/mainService.js"></script>
     <script src="js/canvasService.js"></script>
     <script src="js/memeService.js"></script>
-    <script src="js/share-service.js"></script>
     <script src="js/canvasController.js"></script>
     <script src="js/mainController.js"></script>
+
 </body>
 
 </html>

@@ -12,12 +12,15 @@ function renderCanvas() {
             gCurrMeme = meme;
             meme['txts'].forEach((memeTxtStyle, idx) => {
                 gCtx.fillStyle = memeTxtStyle.color;
+                gCtx.strokeStyle = memeTxtStyle.stroke;
                 gCtx.textAlign = memeTxtStyle.align;
                 setFontSize(idx, memeTxtStyle);
-                var font = memeTxtStyle.size;
-                gCtx.font = font + 'px' + ' Arial';
+                var fontSize = memeTxtStyle.size;
                 setLineHeight(idx, memeTxtStyle);
-                gCtx.fillText(memeTxtStyle.line, gCanvas.width / 2, memeTxtStyle.height);
+                setFontStyle();
+                gCtx.font = fontSize + 'px ' + memeTxtStyle.font;
+                gCtx.fillText(memeTxtStyle.line, memeTxtStyle.posX, memeTxtStyle.height);
+                gCtx.strokeText(memeTxtStyle.line, memeTxtStyle.posX, memeTxtStyle.height);
                 setCurrLineBg(idx, memeTxtStyle)
                 gMaxLines = idx;
             });
@@ -27,12 +30,18 @@ function renderCanvas() {
                 size: 30,
                 align: 'center',
                 color: 'black',
+                font:'Impact',
+                stroke: 'black',
+                posX:250,
                 height: 50
             }, {
                 line: 'ADD TEXT HERE',
                 size: 30,
                 align: 'center',
                 color: 'black',
+                font:'Impact',
+                stroke: 'black',
+                posX:250,
                 height: 450
             }])
             renderCanvas();

@@ -1,14 +1,4 @@
-// let gElForm 
-// let gEv
-
-// function BeforeUploadMeme(elForm , ev){
-//     gElForm = elForm;
-//     gEv = ev;
-//     gShareOrDownload = 'share';
-//     renderCanvas();
-// }
-
-function uploadImg(elForm, ev) {
+function uploadMeme(elForm, ev) {
     ev.preventDefault();
     
     document.getElementById('meme-data').value = gCanvas.toDataURL("Meme/jpeg");
@@ -18,10 +8,10 @@ function uploadImg(elForm, ev) {
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}`);
     }
 
-    doUploadImg(elForm, onSuccess);
+    doUploadMeme(elForm, onSuccess);
 }
 
-function doUploadImg(elForm, onSuccess) {
+function doUploadMeme(elForm, onSuccess) {
     var formData = new FormData(elForm);
     fetch('http://ca-upload.com/here/upload.php', {
         method: 'POST',

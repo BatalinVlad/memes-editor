@@ -1,5 +1,6 @@
 let gMemes = [];
 let gMeme = {};
+let gMemeFont = 'Impact';
 let gCurrMeme;
 let gCurrLine = 0;
 let gMaxLines;
@@ -9,13 +10,19 @@ function createMemes() {
         line: 'ADD TEXT HERE',
         size: 20,
         align: 'center',
-        color: 'red',
+        color: 'black',
+        stroke: 'black',
+        font: 'Impact',
+        posX:250,
         height: 50
     }, {
         line: 'ADD TEXT HERE',
         size: 20,
         align: 'center',
-        color: 'blue',
+        color: 'black',
+        stroke: 'black',
+        font:'Impact',
+        posX: 250,
         height: 450
     }]))
     return gMemes;
@@ -40,6 +47,10 @@ function updateText() {
     renderCanvas();
 }
 
+function updateFont(elFont){
+    gMemeFont =  elFont.value;
+}
+
 function changeLine() {
     gCurrLine++
     if (gCurrLine > gMaxLines) 
@@ -55,6 +66,9 @@ function addLine() {
         size: 20,
         align: 'center',
         color: 'black',
+        stroke: 'black',
+        font:'Impact',
+        posX:250,
         height: gCanvas.width / 2
     });
     gMaxLines++;
@@ -62,4 +76,9 @@ function addLine() {
     gMemes.selectedTxtId = gCurrLine;
     gLineUpOrDown.currLine = gCurrLine;
     renderCanvas()
+}
+
+function saveMeme(){
+    gMemes.push(gCurrMeme);
+    saveToStorage('Memes' , gMemes);
 }

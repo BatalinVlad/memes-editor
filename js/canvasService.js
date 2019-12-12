@@ -1,7 +1,6 @@
 let gCanvas;
 let gCtx;
 let gCanvasBgImg;
-
 let gTextSize = {
     value : 1,
     currLine : ''
@@ -12,6 +11,7 @@ let gLineUpOrDown = {
     value: 0,
     isOn: false
 };
+
 
 function getImgById(id) {
     return gImgs.find(img => img.id + '' === id);
@@ -58,9 +58,28 @@ function setFontSize(idx , memeTxtStyle){
 }
 
 function setTextColor(elTextColor) {
-    gTextColor = elTextColor.value;
-    gCurrMeme['txts'][gCurrLine].color = gTextColor;
+    gCurrMeme['txts'][gCurrLine].color = elTextColor.value;
     renderCanvas();
+}
+
+function setStrokeColor(elStrokeColor) {
+    gCurrMeme['txts'][gCurrLine].stroke = elStrokeColor.value;
+    renderCanvas();
+}
+
+
+function changeAlign(elAlign){
+    gCurrMeme['txts'][gCurrLine].align = elAlign.getAttribute('data-id');
+    setMemePosX(gCurrMeme['txts'][gCurrLine]);
+    renderCanvas();
+}
+
+function setMemePosX(memeTextStyle){
+    if(memeTextStyle.align === 'right') {
+        memeTextStyle.posX = gCanvas.width  - 10;   
+    }else if(memeTextStyle.align === 'left') {
+        memeTextStyle.posX = 10;
+    }
 }
 
 function setCurrLineBg(lineId, memeStyle) {
@@ -68,11 +87,16 @@ function setCurrLineBg(lineId, memeStyle) {
     var bgHeight = memeStyle.size;
     if (gCurrLine === lineId) {
         gCtx.save();
-        gCtx.strokeRect(gCanvas.width / 2 - bgWidth / 2, memeStyle.height - bgHeight + 3, bgWidth, bgHeight);
+        if(memeStyle.align === 'center') gCtx.strokeRect(gCanvas.width / 2 - bgWidth / 2, memeStyle.height - bgHeight + 3, bgWidth, bgHeight);
+        else if(memeStyle.align === 'left') gCtx.strokeRect( 10 , memeStyle.height - bgHeight + 3, bgWidth, bgHeight);
+        else gCtx.strokeRect(gCanvas.width - 10 - bgWidth , memeStyle.height - bgHeight + 3, bgWidth, bgHeight);
         gCtx.restore();
     }
 }
 
+function setFontStyle(){
+    gCurrMeme['txts'][gCurrLine].font = gMemeFont;
+}
 
 function lineUp() {
     gLineUpOrDown.isOn = true;
