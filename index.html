@@ -136,21 +136,25 @@
 
 
                     <div class="section-3-buttons  flex wrap column align-center justify-center fill">
-                        <div class="share-container"></div>
                         <button>
                             <i style="background-color: lightgreen;" class="meme-buttons-button far fa-save"
                                 onclick="saveMemeClick()"><span>Save</span></i>
                         </button>
-                        <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadMeme(this, event)">
-                            <input name="meme" id="meme-data" type="hidden" />
-                            <button class="btn" type="submit"><i style="background-color: rgb(212, 129, 212)"
-                                    class="meme-buttons-button fas fa-share-alt-square" tupe="submit"><span>Share</span>
+
+                        <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadMemeClick(this, event)">
+                            <input name="img" id="imgData" type="hidden" />
+                            <button class="btn" type="submit"> <i style="background-color: rgb(212, 129, 212)"
+                                    class="meme-buttons-button fas fa-share-alt-square"><span>Share</span>
                                 </i></button>
+                            <div class="share-container"></div>
                         </form>
-                        <button><div class="link"></div><i style="background-color: lightblue;"
-                                    class="meme-buttons-button  fas fa-cloud-download-alt"
-                                    onclick="downloadMemeClick(this)"><span>
-                                        Download</span></i></a></button>
+
+                        <button>
+                            <div class="link"></div><i style="background-color: lightblue;"
+                                class="meme-buttons-button  fas fa-cloud-download-alt"
+                                onclick="downloadMemeClick(this)"><span>
+                                    Download</span></i></a>
+                        </button>
                     </div>
                 </div>
             </div>

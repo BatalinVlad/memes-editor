@@ -4,6 +4,8 @@ let gId = 1;
 let gPage = [];
 let gFilterWord = '';
 let gIsDownload = false;
+let gIsShare = false;
+
 
 
 function init() {

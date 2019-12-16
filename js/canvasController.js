@@ -22,7 +22,7 @@ function renderCanvas(callback) {
                 setFontStyle();
                 gCtx.font = fontSize + 'px ' + memeTxtStyle.font;
                 printAt(gCtx, memeTxtStyle.line, memeTxtStyle.posX, memeTxtStyle.height, memeTxtStyle.size, gCanvas.width - 15, 3);
-                if (!gIsSave && !gIsDownload) setCurrLineBg(idx, memeTxtStyle)
+                if (!gIsSave && !gIsDownload && !gIsShare) setCurrLineBg(idx, memeTxtStyle)
                 gLinesCount = 1;
                 gMaxLines = idx;
             });
