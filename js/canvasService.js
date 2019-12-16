@@ -100,12 +100,13 @@ function setCurrLineBg(lineId, memeStyle) {
     var bgHeight = memeStyle.size;
     if (gCurrLine === lineId) {
         gCtx.save();
+        gCtx.globalAlpha = 0.4;
         if (memeStyle.align === 'center')
-            gCtx.strokeRect(gCanvas.width / 2 - bgWidth / 2, memeStyle.height - bgHeight + 3, bgWidth, bgHeight * gLinesCount);
+            gCtx.fillRect(gCanvas.width / 2 - bgWidth / 2, memeStyle.height - bgHeight + 3, bgWidth, bgHeight * gLinesCount);
         else if (memeStyle.align === 'left')
-            gCtx.strokeRect(6, memeStyle.height - bgHeight + 3, bgWidth, bgHeight * gLinesCount);
+            gCtx.fillRect(6, memeStyle.height - bgHeight + 3, bgWidth, bgHeight * gLinesCount);
         else
-            gCtx.strokeRect(gCanvas.width - 4 - bgWidth, memeStyle.height - bgHeight + 3, bgWidth, bgHeight * gLinesCount);
+            gCtx.fillRect(gCanvas.width - 4 - bgWidth, memeStyle.height - bgHeight + 3, bgWidth, bgHeight * gLinesCount);
         gCtx.restore();
     }
 }
